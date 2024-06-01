@@ -82,7 +82,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# User configurationbe
+
+# Turn off all beeps
+unsetopt BEEP
+# Turn off autocomplete beeps
+# unsetopt LIST_BEEP
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
