@@ -20,5 +20,3 @@ done
 
 echo "export DOTFILES_SRC=\"$SRC_DIR\"" > "$HOME/.dotfiles-src"
 
-ln -s "$SRC_DIR/powerlevel10k" "$SRC_DIR/oh-my-zsh/themes"
-
