@@ -19,3 +19,8 @@ ls -A1 "$SRC_DIR/dotfiles" | while read i; do
 
     ln -s "$SRC_DIR/dotfiles/$i" "$HOME/$i"
 done
+
+echo "export DOTFILES_SRC=\"$SRC_DIR\"" > "$HOME/.dotfiles-src"
+
+ln -s "$SRC_DIR/powerlevel10k" "$SRC_DIR/oh-my-zsh/themes"
+
