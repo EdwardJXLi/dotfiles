@@ -1692,7 +1692,7 @@
       local ctx_text=${P10K_CUSTOM_CONTEXT}
 
       # Display the segment with the specified color, icon and text
-      p10k segment -f "${ctx_color}" -i "${ctx_icon}" -t "${ctx_text}"
+      p10k segment -f "${ctx_color}" -i "${ctx_icon}" -t "%B${ctx_text}"
     fi
   }
 
