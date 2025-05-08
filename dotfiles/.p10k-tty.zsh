@@ -32,6 +32,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # os_icon               # os identifier
     context                 # user@hostname
+    customcontext           # custom context segment
     dir                     # current directory
     vcs                     # git status
     prompt_char             # prompt symbol
@@ -1648,6 +1649,26 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 2 -i '*' -t 'hello, %n'
+  }
+
+  ########################
+  # Custom Environment Context Segment
+  ########################
+
+  # This segment displays information about the active custom environment
+  function prompt_customcontext() {
+    # # Only show this segment if we're in a custom environment (detected by environment variable)
+    if [[ -n $P10K_CUSTOM_CONTEXT ]]; then
+      # Get color from env var or use default (white) as default
+      local ctx_color=${P10K_CUSTOM_COLOR:-"255"}
+      # Get icon from env var or use empty as default
+      local ctx_icon=${P10K_CUSTOM_ICON:-""}
+      # Get context text from env var
+      local ctx_text=${P10K_CUSTOM_CONTEXT}
+
+      # Display the segment with the specified color, icon and text
+      p10k segment -f "${ctx_color}" -i "${ctx_icon}" -t "${ctx_text}"
+    fi
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
