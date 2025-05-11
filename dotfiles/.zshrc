@@ -125,3 +125,14 @@ if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
 else
   [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
 fi
+
+# NixOS-specific aliases
+if [[ -d /etc/nixos ]]; then
+  alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
+  alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch $@ --impure --flake .#main)'
+  alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
+  # Nix shell run function with P10K context
+  function hydra-run() {
+      nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\"\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1\"; export SHELL=$SHELL; exec $SHELL"
+  }
+fi
