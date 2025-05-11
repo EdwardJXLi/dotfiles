@@ -133,6 +133,6 @@ if [[ -d /etc/nixos ]]; then
   alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
   # Nix shell run function with P10K context
   function hydra-run() {
-      nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\"\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1\"; export SHELL=$SHELL; exec $SHELL"
+      NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\"\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1\"; export SHELL=$SHELL; exec $SHELL"
   }
 fi
