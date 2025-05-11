@@ -128,7 +128,7 @@ fi
 
 # NixOS-specific aliases
 if [[ -d /etc/nixos ]]; then
-  alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
+  alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
   alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch $@ --impure --flake .#main)'
   alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
   function hydra-run() {
