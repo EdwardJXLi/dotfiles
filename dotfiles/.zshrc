@@ -147,15 +147,15 @@ if [[ -d /etc/nixos ]]; then
   alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
   alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch $@ --impure --flake .#main)'
   alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
-  function hydra-run() {
-    NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=$1; export SHELL=$SHELL; exec $SHELL"
-  }
   function hydra-clean() {
     if [[ "$1" == "--hard" ]]; then
       sudo nix-collect-garbage -d
     else
       sudo nix-collect-garbage --delete-older-than 7d
     fi
+  }
+  function nix-run() {
+    NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=$1; export SHELL=$SHELL; exec $SHELL"
   }
 fi
 
