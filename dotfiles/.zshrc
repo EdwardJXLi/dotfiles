@@ -126,6 +126,9 @@ else
   [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
 fi
 
+# Created by `pipx` on 2025-05-12 21:59:25
+export PATH="$PATH:/Users/edward/.local/bin"
+
 # Custom functions
 sgpt-shell() {
   sgpt --shell "$*"
