@@ -126,10 +126,16 @@ else
   [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
 fi
 
-# Aliases
-alias lg='lazygit'
+# Custom functions
+sgpt-shell() {
+  sgpt --shell "$*"
+}
 
-# NixOS-specific aliases
+# Custom aliases
+alias lg='lazygit'
+alias \?='sgpt-shell'
+
+# NixOS-specific custom aliases
 if [[ -d /etc/nixos ]]; then
   alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
   alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch $@ --impure --flake .#main)'
