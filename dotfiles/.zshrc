@@ -133,9 +133,13 @@ export PATH="$PATH:/Users/edward/.local/bin"
 sgpt-shell() {
   sgpt --shell "$*"
 }
+sgpt-ask() {
+  sgpt "$*"
+}
 
 # Custom aliases
 alias lg='lazygit'
+alias \?\?='sgpt-ask'
 alias \?='sgpt-shell'
 
 # NixOS-specific custom aliases
