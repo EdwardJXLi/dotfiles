@@ -5,3 +5,5 @@
 	name = Edward Li
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
