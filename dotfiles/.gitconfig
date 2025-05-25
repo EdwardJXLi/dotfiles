@@ -3,3 +3,5 @@
 [user]
 	email = jiaxi.edwardli@gmail.com
 	name = Edward Li
+[pull]
+	rebase = true
