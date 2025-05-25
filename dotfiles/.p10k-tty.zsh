@@ -34,6 +34,7 @@
     context                 # user@hostname
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     customcontext           # custom context segment
+    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     dir                     # current directory
     vcs                     # git status
     prompt_char             # prompt symbol
@@ -49,7 +50,6 @@
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     goenv                   # go environment (https://github.com/syndbg/goenv)
