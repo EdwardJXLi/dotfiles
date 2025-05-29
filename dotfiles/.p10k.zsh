@@ -31,6 +31,7 @@
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # os_icon               # os identifier
+    remote_ctx              # remote context indicator
     context                 # user@hostname
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     customcontext           # custom context segment
@@ -923,14 +924,14 @@
   # Context color when running with privileges.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=001
   # Context color in SSH without privileges.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=164
+  # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=164
   # Default context color (no privileges, no SSH).
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=076
 
   # Context format when running with privileges: bold user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%B%n@%m'
   # Context format when in SSH without privileges: bold user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%B%n@%m'
+  # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%B%n@%m'
   # Default context format (no privileges, no SSH): bold user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%B%n@%m'
 
@@ -1679,6 +1680,13 @@
   ########################
   # Custom Environment Context Segment
   ########################
+
+  # Custom remote context segment
+  function prompt_remote_ctx() {
+    if [[ $P9K_SSH != 0 ]]; then
+      p10k segment -f 250 -t 'REMOTE'
+    fi
+  }
 
   # This segment displays information about the active custom environment
   function prompt_customcontext() {
