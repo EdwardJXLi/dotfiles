@@ -107,6 +107,10 @@ unsetopt BEEP
 #   export EDITOR='mvim'
 # fi
 
+# Use nano for default editor
+# (will switch to vim later)
+export EDITOR='nano'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
