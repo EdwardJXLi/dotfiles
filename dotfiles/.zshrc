@@ -183,7 +183,7 @@ if command -v nix >/dev/null 2>&1; then
     )
   }
   function home-build() {
-    home-manager switch -f ~/home.nix
+    home-manager switch --show-trace -f ~/home.nix
   }
   function nix-clean() {
     if [[ "$1" == "--hard" ]]; then
