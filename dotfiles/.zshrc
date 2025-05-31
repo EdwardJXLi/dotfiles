@@ -182,10 +182,10 @@ if command -v nix >/dev/null 2>&1; then
       lazygit
     )
   }
-  function home-switch() {
+  function home-build() {
     home-manager switch -f ~/home.nix
   }
-  function hydra-clean() {
+  function nix-clean() {
     if [[ "$1" == "--hard" ]]; then
       sudo nix-collect-garbage -d
     else
