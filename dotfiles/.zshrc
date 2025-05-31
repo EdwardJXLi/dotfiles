@@ -168,11 +168,23 @@ x(){
     fi
 }
 
-# NixOS-specific custom aliases
-if [[ -d /etc/nixos ]]; then
-  alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
-  alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch  $@ --show-trace --impure --flake .#main)'
-  alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
+# Nix-specific custom aliases
+if command -v nix >/dev/null 2>&1; then
+  # alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
+  # alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch  $@ --show-trace --impure --flake .#main)'
+  # alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
+  function home-edit() {
+    (
+      cd ~/.config/home-manager &&
+      $EDITOR base.nix &&
+      $EDITOR extras.nix &&
+      $EDITOR desktop.nix &&
+      lazygit
+    )
+  }
+  function home-switch() {
+    home-manager switch -f ~/home.nix
+  }
   function hydra-clean() {
     if [[ "$1" == "--hard" ]]; then
       sudo nix-collect-garbage -d
