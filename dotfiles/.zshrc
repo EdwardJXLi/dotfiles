@@ -193,7 +193,7 @@ if command -v nix >/dev/null 2>&1; then
     fi
   }
   function nix-run() {
-    NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=$1; export SHELL=$SHELL; exec $SHELL"
+    NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1; export SHELL=$SHELL; exec $SHELL"
   }
   function sudo-run() {
     sudo $(which $1)
