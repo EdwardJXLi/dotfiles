@@ -182,9 +182,11 @@ if command -v nix >/dev/null 2>&1; then
       lazygit
     )
   }
-  function home-build() {
+  function home-switch() {
     home-manager switch --show-trace -f ~/home.nix
   }
+  alias home-build=home-switch
+  alias home-rebuild=home-switch
   function nix-clean() {
     if [[ "$1" == "--hard" ]]; then
       sudo nix-collect-garbage -d
