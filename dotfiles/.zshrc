@@ -189,9 +189,9 @@ if command -v nix >/dev/null 2>&1; then
   alias home-rebuild=home-switch
   function nix-clean() {
     if [[ "$1" == "--hard" ]]; then
-      sudo nix-collect-garbage -d
+      sudo nix-store --gc -d
     else
-      sudo nix-collect-garbage --delete-older-than 7d
+      sudo nix-store --gc --delete-older-than 7d
     fi
   }
   function nix-run() {
