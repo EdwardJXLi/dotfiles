@@ -188,11 +188,7 @@ if command -v nix >/dev/null 2>&1; then
   alias home-build=home-switch
   alias home-rebuild=home-switch
   function nix-clean() {
-    if [[ "$1" == "--hard" ]]; then
-      sudo nix-store --gc -d
-    else
-      sudo nix-store --gc --delete-older-than 7d
-    fi
+    nix-store --gc
   }
   function nix-run() {
     NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1; export SHELL=$SHELL; exec $SHELL"
