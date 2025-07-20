@@ -182,6 +182,12 @@ if command -v nix >/dev/null 2>&1; then
       lazygit
     )
   }
+  function home-update() {
+    nix-channel --update unstable
+  }
+  function home-upgrade() {
+    nix-channel --update
+  }
   function home-switch() {
     home-manager switch --show-trace -f ~/home.nix
   }
