@@ -134,8 +134,8 @@ else
   [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
 fi
 
-# Created by `pipx` on 2025-05-12 21:59:25
-export PATH="$PATH:/Users/edward/.local/bin"
+# Add uv and pipx to PATH
+export PATH="$PATH:/Users/edward/.local/bin:/home/hydra/.local/bin"
 
 # Source all zshrc files in the zshrc directory
 for file in $DOTFILES_SRC/zshrc/*.zsh; do
