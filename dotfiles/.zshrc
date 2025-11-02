@@ -141,3 +141,8 @@ export PATH="$PATH:/Users/edward/.local/bin:/home/hydra/.local/bin"
 for file in $DOTFILES_SRC/zshrc/*.zsh; do
   source "$file"
 done
+
+# If the file ~/.zsh_extras exists, source it as well (per-machine extra configuration)
+if [ -f "$HOME/.zsh_extras.zsh" ]; then
+  source "$HOME/.zsh_extras.zsh"
+fi
