@@ -16,7 +16,14 @@ if command -v nix >/dev/null 2>&1; then
     nix-channel --update unstable
   }
   function home-upgrade() {
-    nix-channel --update
+    echo "This will update all nix channels. Are you sure you want to continue? (y/n) "
+    read
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      nix-channel --update
+    else
+      echo "Aborted."
+    fi
   }
   function home-switch() {
     home-manager switch --show-trace -f ~/home.nix
