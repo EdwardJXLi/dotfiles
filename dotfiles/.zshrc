@@ -137,6 +137,9 @@ fi
 # Add uv and pipx to PATH
 export PATH="$PATH:/Users/edward/.local/bin:/home/hydra/.local/bin"
 
+# Add go to PATH
+export PATH="$PATH:$HOME/go/bin"
+
 # Source all zshrc files in the zshrc directory
 for file in $DOTFILES_SRC/zshrc/*.zsh; do
   source "$file"
