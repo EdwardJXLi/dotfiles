@@ -34,3 +34,12 @@ x(){
         echo "'$1' is not a valid file"
     fi
 }
+
+# Helpful alias for editing hyprland config
+function hypr-edit {
+    (
+      cd ~/.config/hypr &&
+      $EDITOR hyprland.conf &&
+      lazygit
+    )
+}
