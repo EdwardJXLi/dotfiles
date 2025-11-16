@@ -33,6 +33,7 @@ if command -v nix >/dev/null 2>&1; then
   function nix-clean() {
     nix-store --gc
   }
+  alias nix-gc=nix-clean
   function nix-run() {
     NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1; export SHELL=$SHELL; exec $SHELL"
   }
