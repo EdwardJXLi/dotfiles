@@ -93,6 +93,13 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+  [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
+fi
+
 # User configurationbe
 
 # Turn off all beeps
@@ -127,13 +134,6 @@ export EDITOR='nano'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-else
-  [[ ! -f ~/.p10k-tty.zsh ]] || source ~/.p10k-tty.zsh
-fi
 
 # Add uv and pipx to PATH
 export PATH="$PATH:/Users/edward/.local/bin:/home/hydra/.local/bin"
