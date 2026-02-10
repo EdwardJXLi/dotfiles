@@ -83,6 +83,10 @@ ENABLE_CORRECTION="true"
 # Disable ZSH security
 ZSH_DISABLE_COMPFIX="true"
 
+# Decrease ZSH history size
+HISTSIZE=10000
+SAVEHIST=9000
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
