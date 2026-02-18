@@ -10,7 +10,7 @@ sgpt-ask() {
 
 # Custom aliases
 alias lg='lazygit'
-alias s='zellij'
+alias z='zellij'
 alias \?\?='sgpt-ask'
 alias \?='sgpt-shell'
 
