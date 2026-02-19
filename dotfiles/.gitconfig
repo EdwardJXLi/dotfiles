@@ -7,3 +7,7 @@
 	rebase = true
 [push]
 	autoSetupRemote = true
+[alias]
+	pushf = push --force-with-lease
+	fpush = push --force-with-lease
+	ffpush = push --force
