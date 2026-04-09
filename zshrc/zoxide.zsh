@@ -1,5 +1,5 @@
-# Enable zoxide if installed
-if command -v zoxide >/dev/null 2>&1; then
+# Enable zoxide if installed (skip for root user)
+if command -v zoxide >/dev/null 2>&1 && [[ "$EUID" -ne 0 ]]; then
   # If DISABLE_ZOXIDE_CD is not set, alias cd to zoxide
   if [[ -z "$DISABLE_ZOXIDE_CD" ]]; then
     eval "$(zoxide init --cmd cd zsh)"
