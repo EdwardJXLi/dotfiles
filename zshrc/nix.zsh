@@ -13,20 +13,32 @@ if command -v nix >/dev/null 2>&1; then
     )
   }
   function home-update() {
-    nix-channel --update unstable
+    (
+      cd ~/.config/home-manager &&
+      nix flake update nixpkgs-unstable &&
+      lazygit
+    )
   }
   function home-upgrade() {
     echo "This will update all nix channels. Are you sure you want to continue? (y/n) "
     read
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-      nix-channel --update
+      (
+        cd ~/.config/home-manager &&
+        nix flake update &&
+        lazygit
+      )
     else
       echo "Aborted."
     fi
   }
   function home-switch() {
-    home-manager switch --show-trace -f ~/home.nix
+    if [ "$EUID" -eq 0 ]; then
+      (cd ~/.config/home-manager && home-manager switch --flake .#root)
+    else
+      (cd ~/.config/home-manager && home-manager switch --flake .#hydra)
+    fi
   }
   alias home-build=home-switch
   alias home-rebuild=home-switch
