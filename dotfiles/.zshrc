@@ -145,6 +145,9 @@ export PATH="$PATH:/Users/edward/.local/bin:/home/hydra/.local/bin"
 # Add go to PATH
 export PATH="$PATH:$HOME/go/bin"
 
+# Add cargo to PATH
+export PATH="$PATH:$HOME/.cargo/bin"
+
 # Source all zshrc files in the zshrc directory
 for file in $DOTFILES_SRC/zshrc/*.zsh; do
   source "$file"
