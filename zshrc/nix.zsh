@@ -44,9 +44,11 @@ if command -v nix >/dev/null 2>&1; then
   alias home-build=home-switch
   alias home-rebuild=home-switch
   function nix-clean() {
-    nix-store --gc
+    nix-collect-garbage --delete-older-than 7d
   }
   alias nix-gc=nix-clean
+  alias home-clean=nix-clean
+  alias home-gc=nix-gc
   function nix-run() {
     NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1; export SHELL=$SHELL; exec $SHELL"
   }
