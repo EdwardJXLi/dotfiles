@@ -17,6 +17,7 @@ if command -v nix >/dev/null 2>&1; then
       cd ~/.config/home-manager &&
       nix flake update nixpkgs-unstable &&
       nix flake update nixpkgs-master &&
+      nix flake update llm-agents &&
       lazygit
     )
   }
