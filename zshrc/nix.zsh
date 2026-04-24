@@ -51,7 +51,13 @@ if command -v nix >/dev/null 2>&1; then
   alias home-clean=nix-clean
   alias home-gc=nix-gc
   function nix-run() {
-    NIXPKGS_ALLOW_UNFREE=1 nix-shell -p $1 --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }$1; export SHELL=$SHELL; exec $SHELL"
+    local pkg=$1
+    local ref=$2
+    local -a nixpkgs_arg
+    if [ -n "$ref" ]; then
+      nixpkgs_arg=(-I "nixpkgs=https://github.com/NixOS/nixpkgs/archive/${ref}.tar.gz")
+    fi
+    NIXPKGS_ALLOW_UNFREE=1 nix-shell $nixpkgs_arg -p $pkg --run "export P10K_CUSTOM_CONTEXT=\${P10K_CUSTOM_CONTEXT:+\$P10K_CUSTOM_CONTEXT + }${pkg}${ref:+@${ref}}; export SHELL=$SHELL; exec $SHELL"
   }
   function sudo-run() {
     sudo -E $(which $1) "${@:2}"
