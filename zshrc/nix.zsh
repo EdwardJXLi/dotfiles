@@ -12,6 +12,13 @@ if command -v nix >/dev/null 2>&1; then
       lazygit
     )
   }
+  function home-update-llm() {
+    (
+      cd ~/.config/home-manager &&
+      nix flake update llm-agents &&
+      lazygit
+    )
+  }
   function home-update() {
     (
       cd ~/.config/home-manager &&
