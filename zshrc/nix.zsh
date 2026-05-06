@@ -1,8 +1,6 @@
 # Nix-specific custom aliases
+# NOTE: Requires Nix, NH (https://github.com/nix-community/nh), and lazygit (https://github.com/jesseduffield/lazygit)
 if command -v nix >/dev/null 2>&1; then
-  # alias hydra-edit='(cd /etc/nixos/ && sudo $EDITOR configuration.nix; sudo $EDITOR flake.nix; sudo $EDITOR user-packages.nix; sudo lazygit)'
-  # alias hydra-rebuild='(cd /etc/nixos && sudo nixos-rebuild switch  $@ --show-trace --impure --flake .#main)'
-  # alias hydra-upgrade='(cd /etc/nixos && sudo nix-channel --update && sudo nixos-rebuild switch $@ --upgrade --impure --flake .#main)'
   function home-edit() {
     (
       cd ~/.config/home-manager &&
@@ -44,15 +42,15 @@ if command -v nix >/dev/null 2>&1; then
   }
   function home-switch() {
     if [ "$EUID" -eq 0 ]; then
-      (cd ~/.config/home-manager && home-manager switch --flake .#root)
+      nh home switch ~/.config/home-manager -c root
     else
-      (cd ~/.config/home-manager && home-manager switch --flake .#hydra)
+      nh home switch ~/.config/home-manager -c hydra
     fi
   }
   alias home-build=home-switch
   alias home-rebuild=home-switch
   function nix-clean() {
-    nix-collect-garbage --delete-older-than 7d
+    nh clean all --keep 3 --keep-since 3d
   }
   alias nix-gc=nix-clean
   alias home-clean=nix-clean
