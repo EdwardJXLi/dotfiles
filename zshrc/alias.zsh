@@ -14,6 +14,10 @@ alias z='zellij'
 alias \?\?='sgpt-ask'
 alias \?='sgpt-shell'
 
+# Coding agent aliases
+alias clauded='claude --dangerously-skip-permissions'
+alias codexd='codex --dangerously-bypass-approvals-and-sandbox'
+
 # File extraction aliases
 x(){
     if [ -f $1 ] ; then
