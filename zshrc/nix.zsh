@@ -42,9 +42,9 @@ if command -v nix >/dev/null 2>&1; then
   }
   function home-switch() {
     if [ "$EUID" -eq 0 ]; then
-      nh home switch ~/.config/home-manager -c root
+      nh home switch ~/.config/home-manager -c root --show-trace
     else
-      nh home switch ~/.config/home-manager -c hydra
+      nh home switch ~/.config/home-manager -c hydra --show-trace
     fi
   }
   alias home-build=home-switch
