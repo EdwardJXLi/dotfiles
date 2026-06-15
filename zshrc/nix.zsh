@@ -14,6 +14,7 @@ if command -v nix >/dev/null 2>&1; then
     (
       cd ~/.config/home-manager &&
       nix flake update llm-agents &&
+      nix-channel --update &&
       lazygit
     )
   }
@@ -23,6 +24,8 @@ if command -v nix >/dev/null 2>&1; then
       nix flake update nixpkgs-unstable &&
       nix flake update nixpkgs-master &&
       nix flake update llm-agents &&
+      nix-channel --update unstable &&
+      nix-channel --update master &&
       lazygit
     )
   }
@@ -34,6 +37,7 @@ if command -v nix >/dev/null 2>&1; then
       (
         cd ~/.config/home-manager &&
         nix flake update &&
+        nix-channel --update &&
         lazygit
       )
     else
