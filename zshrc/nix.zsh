@@ -54,7 +54,7 @@ if command -v nix >/dev/null 2>&1; then
   alias home-build=home-switch
   alias home-rebuild=home-switch
   function nix-clean() {
-    nh clean all --keep 3 --keep-since 3d
+      nix-collect-garbage --delete-older-than 7d
   }
   alias nix-gc=nix-clean
   alias home-clean=nix-clean
