@@ -17,6 +17,7 @@ alias \?='sgpt-shell'
 # Coding agent aliases
 alias clauded='claude --dangerously-skip-permissions'
 alias codexd='codex --dangerously-bypass-approvals-and-sandbox'
+alias pia='pi --ask'
 
 # File extraction aliases
 x(){
