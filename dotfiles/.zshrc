@@ -148,6 +148,9 @@ export PATH="$PATH:$HOME/go/bin"
 # Add cargo to PATH
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# Add npm global bin to PATH
+export PATH="$PATH:$HOME/.npm-global/bin"
+
 # Source all zshrc files in the zshrc directory
 for file in $DOTFILES_SRC/zshrc/*.zsh; do
   source "$file"
