@@ -901,7 +901,9 @@
   # Context color in SSH without privileges.
   # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=005
   # Default context color (no privileges, no SSH).
-  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=002
+  # Override with the P10K_CONTEXT_COLOR_TTY env var; falls back to 002.
+  # Note: a Linux TTY only supports the basic 0-15 colors.
+  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=${P10K_CONTEXT_COLOR_TTY:-002}
 
   # Context format when running with privileges: bold user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
