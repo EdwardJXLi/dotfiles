@@ -8,6 +8,15 @@ sgpt-ask() {
   sgpt "$*"
 }
 
+upboot() {
+  if ! sudo -v; then
+    echo "upboot: sudo access is required" >&2
+    return 1
+  fi
+
+  sudo pacman -Syu && hyprpm update && sudo reboot
+}
+
 # Custom aliases
 alias lg='lazygit'
 alias z='zellij'
